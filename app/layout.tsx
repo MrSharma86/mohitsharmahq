@@ -7,7 +7,7 @@ export const metadata = {
   description:
     "A data scientist who solves real problems, writes thoughtfully, competes rigorously, and coaches people to grow.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "public/favicon.ico",
   },
 };
 
