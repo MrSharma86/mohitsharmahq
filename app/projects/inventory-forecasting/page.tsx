@@ -601,5 +601,6 @@ export default function InventoryForecastingPage() {
         </div>
       </section>
     </div>
+    </div>
   );
 }
