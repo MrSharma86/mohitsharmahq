@@ -6,9 +6,6 @@ export const metadata = {
   title: "Mohit Sharma | Data Scientist",
   description:
     "A data scientist who solves real problems, writes thoughtfully, competes rigorously, and coaches people to grow.",
-  icons: {
-    icon: "public/favicon.ico",
-  },
 };
 
 function Navbar() {
