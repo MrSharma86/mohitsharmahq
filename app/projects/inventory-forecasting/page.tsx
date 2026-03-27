@@ -64,6 +64,7 @@ const codeStyle = {
 
 export default function InventoryForecastingPage() {
   return (
+  <div className="min-h-screen bg-neutral-950 text-neutral-100">
     <div className="mx-auto max-w-5xl px-6 py-20 md:px-10 md:py-24">
       <section className="max-w-4xl">
         <p className="text-sm uppercase tracking-[0.28em] text-neutral-400">
