@@ -75,33 +75,34 @@ const independentProjects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-24">
-      <section className="max-w-4xl">
-        <p className="text-sm uppercase tracking-[0.28em] text-neutral-400">
-          Projects
-        </p>
-
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white md:text-6xl">
-          Projects and Case Studies
-        </h1>
-
-        <div className="mt-8 space-y-6 text-lg leading-8 text-neutral-300">
-          <p>
-            This page brings together two related but distinct kinds of work.
-            The first reflects how I operate in enterprise and professional
-            environments, where constraints are real, decisions carry
-            consequences, and impact must be measurable. The second reflects how
-            I continue to build independently, using open projects and
-            experiments to explore ideas, sharpen methods, and stay close to the
-            craft itself.
+    <div className="min-h-screen bg-neutral-950 text-neutral-100">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-24">
+        <section className="max-w-4xl">
+          <p className="text-sm uppercase tracking-[0.28em] text-neutral-400">
+            Projects
           </p>
 
-          <p>
-            Taken together, they offer a more complete picture of how I think:
-            not just in terms of models or tools, but in terms of systems,
-            trade-offs, and outcomes.
-          </p>
-        </div>
+          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white md:text-6xl">
+            Projects and Case Studies
+          </h1>
+
+          <div className="mt-8 space-y-6 text-lg leading-8 text-neutral-300">
+            <p>
+              This page brings together two related but distinct kinds of work.
+              The first reflects how I operate in enterprise and professional
+              environments, where constraints are real, decisions carry
+              consequences, and impact must be measurable. The second reflects how
+              I continue to build independently, using open projects and
+              experiments to explore ideas, sharpen methods, and stay close to the
+              craft itself.
+            </p>
+
+            <p>
+              Taken together, they offer a more complete picture of how I think:
+              not just in terms of models or tools, but in terms of systems,
+              trade-offs, and outcomes.
+            </p>
+          </div>
       </section>
 
       <section className="mt-20">
@@ -242,5 +243,6 @@ export default function ProjectsPage() {
         </div>
       </section>
     </div>
+     </div>
   );
 }
