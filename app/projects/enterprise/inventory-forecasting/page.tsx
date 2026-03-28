@@ -221,6 +221,27 @@ export default function InventoryForecastingPage() {
         </div>
       </section>
 
+      <section className="mt-16 space-y-6">
+        <h3 className="text-xl font-semibold text-zinc-100">
+          System architecture
+        </h3>
+
+        <p className="max-w-4xl leading-8 text-zinc-300">
+          The forecasting system follows a two-stage modelling approach. First, a
+          classification model estimates the likelihood of delay. This is followed by
+          a regression model that estimates the expected duration of delay. These
+          outputs are then combined to adjust the baseline inventory forecast.
+        </p>
+
+        <div className="overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/40">
+          <img
+            src="/two-stage-inventory-forcasting-1.png"
+            alt="Two-stage inventory forecasting model architecture"
+            className="w-full h-auto"
+          />
+        </div>
+      </section>
+
       <section className="mt-24 space-y-8">
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-200">
           Model exploration
