@@ -10,16 +10,18 @@ const enterpriseWork = [
       "70 MSEK realised savings · 350 MSEK projected impact",
     href: "/projects/inventory-forecasting",
     note: "Confidential context — code is not shared publicly.",
+    tags: ["Telecom", "Inventory Optmization", "Decision Systems"],
   },
   {
-    title: "Fraud Detection in Banking",
-    category: "Banking · Fraud · Risk Modelling",
+    title: "Credit Card Fraud Detection",
+    category: "Banking · Fraud Detection · Decision Systems",
     description:
-      "Building fraud models in a regulated environment where precision, recall, and operational usability had immediate business consequences.",
+    "A fraud detection case study focused on rare-event modelling, ensemble decisioning, and the realities of operating under banking regulations.",
     impact:
-      "12% recall improvement · 15% reduction in false positives",
-    href: "/projects/fraud-detection",
-    note: "Confidential context — implementation details are shared at a high level only.",
+    "Enabled more reliable detection of rare fraud events by combining supervised models with anomaly detection, while keeping operational false positives under control.",
+    href: "/projects/credit-card-fraud-detection",
+    note: "Confidential context — code is not shared publicly.",
+    tags: ["Banking", "Fraud Detection", "Decision Systems"],
   },
   {
     title: "Propensity & Cross-Sell Modelling",
