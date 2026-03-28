@@ -47,215 +47,180 @@ const featuredWork = [
 const signals = [
   {
     value: "15+",
-    label:
-      "Years across analytics, machine learning, AI, and enterprise problem-solving",
+    label: "Years across analytics, machine learning, AI, and enterprise problem-solving",
   },
   {
     value: "50+",
-    label:
-      "Initiatives across retail, banking, technology, and automotive domains",
+    label: "Initiatives across retail, banking, technology, and automotive domains",
   },
   {
     value: "700+",
-    label:
-      "Individuals trained, mentored, and coached across data and analytics",
+    label: "Individuals trained, mentored, and coached across data and analytics",
   },
 ];
 
 export default function HomePage() {
   return (
-    <div className="relative overflow-hidden bg-neutral-950 text-neutral-100">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-white/[0.04] blur-3xl" />
-        <div className="absolute right-0 top-[420px] h-[360px] w-[360px] rounded-full bg-white/[0.03] blur-3xl" />
-      </div>
+    <main className="mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
+      <section className="space-y-5">
+        <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
+          Data Science · Machine Learning · AI · Strategy & Value Realization
+        </p>
 
-      <section className="relative mx-auto max-w-5xl px-6 pb-16 pt-28 md:px-10 md:pb-20 md:pt-36">
-        <div className="max-w-3xl">
-          <p className="mb-6 text-xs uppercase tracking-[0.32em] text-neutral-500">
-            Data Science · Machine Learning · AI · Strategy & Value Realization
+        <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-zinc-100 sm:text-5xl">
+          Mohit Sharma
+        </h1>
+
+        <p className="max-w-3xl text-lg leading-8 text-zinc-300">
+          A data scientist who solves real problems, writes thoughtfully,
+          competes rigorously, and coaches people to grow.
+        </p>
+
+        <div className="max-w-4xl space-y-5 text-base leading-8 text-zinc-300">
+          <p>
+            My work sits at the intersection of data, decision-making, and
+            real-world outcomes. Over time, I have come to believe that solving
+            meaningful problems is rarely about models alone. It is about
+            understanding context, navigating trade-offs, and staying close to
+            the human realities behind the numbers.
           </p>
-
-          <h1 className="text-5xl font-semibold tracking-tight text-white md:text-7xl">
-            Mohit Sharma
-          </h1>
-
-          <p className="mt-6 text-xl leading-9 text-neutral-200 md:text-2xl md:leading-10">
-            A data scientist who solves real problems, writes thoughtfully,
-            competes rigorously, and coaches people to grow.
+          <p>
+            This website brings together my work, ideas, experiments, and
+            reflections, along with the practices that continue to shape how I
+            think, build, compete, and help others grow.
           </p>
+        </div>
 
-          <div className="mt-10 space-y-6 text-lg leading-9 text-neutral-300">
-            <p>
-              My work sits at the intersection of data, decision-making, and
-              real-world outcomes. Over time, I have come to believe that
-              solving meaningful problems is rarely about models alone. It is
-              about understanding context, navigating trade-offs, and staying
-              close to the human realities behind the numbers.
-            </p>
+        <div className="flex flex-wrap gap-4 pt-2">
+          <Link
+            href="/projects"
+            className="rounded-full border border-zinc-700 bg-zinc-100 px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+          >
+            View My Work
+          </Link>
+          <Link
+            href="/writing"
+            className="rounded-full border border-zinc-800 bg-zinc-900/40 px-5 py-3 text-sm font-medium text-zinc-200 transition hover:border-zinc-700 hover:bg-zinc-900/70"
+          >
+            Explore My Thinking
+          </Link>
+        </div>
+      </section>
 
-            <p>
-              This website brings together my work, ideas, experiments, and
-              reflections, along with the practices that continue to shape how I
-              think, build, compete, and help others grow.
-            </p>
+      <section className="mt-16 grid gap-4 md:grid-cols-3">
+        {signals.map((item) => (
+          <div
+            key={item.value}
+            className="rounded-3xl border border-zinc-800 bg-zinc-900/40 p-6"
+          >
+            <p className="text-3xl font-semibold text-zinc-100">{item.value}</p>
+            <p className="mt-2 text-sm leading-6 text-zinc-400">{item.label}</p>
           </div>
-
-          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href="/projects"
-              className="rounded-full border border-white bg-white px-7 py-3 text-sm font-medium text-neutral-950 transition hover:scale-[1.02]"
-            >
-              View My Work
-            </Link>
-            <Link
-              href="/writing"
-              className="rounded-full border border-white/20 px-7 py-3 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
-            >
-              Explore My Thinking
-            </Link>
-          </div>
-        </div>
+        ))}
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-10 md:px-10">
-        <div className="grid gap-px overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/10 md:grid-cols-3">
-          {signals.map((item) => (
-            <div
-              key={item.label}
-              className="bg-white/[0.03] p-6 transition hover:bg-white/[0.05] md:p-8"
-            >
-              <p className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
-                {item.value}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-neutral-400">
-                {item.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <section className="mt-24 space-y-8">
+        <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
+          What I Do
+        </p>
+        <h2 className="text-2xl font-semibold tracking-tight text-zinc-200">
+          My work is shaped by a few consistent threads that connect problem
+          solving, reflection, competition, and growth.
+        </h2>
+        <p className="max-w-3xl leading-8 text-zinc-300">
+          Each of these areas reflects a different side of the same core
+          orientation: to think clearly, work rigorously, and create value that
+          is both practical and lasting.
+        </p>
 
-      <section className="relative mx-auto max-w-6xl px-6 pb-6 md:px-10">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-        <div className="max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.28em] text-neutral-400">
-            What I Do
-          </p>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-            My work is shaped by a few consistent threads that connect problem
-            solving, reflection, competition, and growth.
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-neutral-300">
-            Each of these areas reflects a different side of the same core
-            orientation: to think clearly, work rigorously, and create value
-            that is both practical and lasting.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2">
           {focusAreas.map((item) => (
             <div
               key={item.title}
-              className="group rounded-[2rem] border border-white/10 bg-white/[0.025] p-8 transition duration-300 hover:border-white/20 hover:bg-white/[0.045]"
+              className="rounded-3xl border border-zinc-800 bg-zinc-900/40 p-6"
             >
-              <div className="mb-6 h-1 w-14 rounded-full bg-white/30 transition group-hover:w-20 group-hover:bg-white/60" />
-              <h3 className="text-2xl font-medium text-white">{item.title}</h3>
-              <p className="mt-4 text-base leading-8 text-neutral-300">
-                {item.description}
-              </p>
+              <h3 className="text-xl font-semibold text-zinc-100">
+                {item.title}
+              </h3>
+              <p className="mt-3 leading-8 text-zinc-300">{item.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-6xl px-6 pb-6 md:px-10">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-      </section>
+      <section className="mt-24 space-y-8">
+        <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
+          Featured Sections
+        </p>
+        <h2 className="text-2xl font-semibold tracking-tight text-zinc-200">
+          The site is being built as a living body of work rather than a static
+          portfolio.
+        </h2>
+        <p className="max-w-3xl leading-8 text-zinc-300">
+          Over time, it will hold a more complete record of the work I have
+          done, the ideas I continue to refine, and the direction in which I
+          want to grow as a professional and as a person.
+        </p>
 
-      <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-        <div className="max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.28em] text-neutral-400">
-            Featured Sections
-          </p>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-            The site is being built as a living body of work rather than a
-            static portfolio.
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-neutral-300">
-            Over time, it will hold a more complete record of the work I have
-            done, the ideas I continue to refine, and the direction in which I
-            want to grow as a professional and as a person.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3">
           {featuredWork.map((item) => (
-            <Link
+            <div
               key={item.title}
-              href={item.href}
-              className="rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 transition hover:border-white/20 hover:bg-white/[0.04]"
+              className="rounded-3xl border border-zinc-800 bg-zinc-900/40 p-6"
             >
-              <h3 className="text-2xl font-medium text-white">{item.title}</h3>
-              <p className="mt-4 text-base leading-8 text-neutral-300">
-                {item.description}
-              </p>
-              <p className="mt-6 text-sm font-medium tracking-wide text-neutral-200">
+              <h3 className="text-xl font-semibold text-zinc-100">
+                {item.title}
+              </h3>
+              <p className="mt-3 leading-8 text-zinc-300">{item.description}</p>
+              <Link
+                href={item.href}
+                className="mt-4 inline-flex text-sm font-medium text-zinc-300 transition hover:text-zinc-100"
+              >
                 Explore section →
-              </p>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-6xl px-6 pb-6 md:px-10">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-        <div className="grid gap-8 rounded-[2rem] border border-white/10 bg-white/[0.03] p-8 md:grid-cols-[1.15fr_0.85fr] md:p-12">
-          <div>
-            <p className="text-sm uppercase tracking-[0.28em] text-neutral-400">
-              About This Space
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-              A personal website should reveal more than a list of roles and
-              achievements.
-            </h2>
-
-            <div className="mt-6 space-y-6 text-lg leading-8 text-neutral-300">
-              <p>
-                The strongest professional identities are rarely built on titles
-                alone. They emerge through a combination of work, ideas,
-                discipline, and point of view. That is the direction I want this
-                website to take.
-              </p>
-              <p>
-                Alongside projects and experience, this space will also hold
-                reflections on books, competition, decision-making, coaching,
-                and the habits that shape a more intentional life.
-              </p>
-            </div>
-          </div>
-
-          <div className="rounded-[1.75rem] border border-white/10 bg-neutral-900/70 p-8">
-            <p className="text-sm uppercase tracking-[0.22em] text-neutral-400">
-              Coming Next
-            </p>
-            <ul className="mt-6 space-y-4 text-base leading-7 text-neutral-300">
-              <li>Interactive CV</li>
-              <li>Case-study based projects</li>
-              <li>Technical and professional writing</li>
-              <li>Kaggle journey and experiments</li>
-              <li>Coaching page</li>
-              <li>Personal reflections and book notes</li>
-            </ul>
-          </div>
+      <section className="mt-24 space-y-8">
+        <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
+          About This Space
+        </p>
+        <h2 className="text-2xl font-semibold tracking-tight text-zinc-200">
+          A personal website should reveal more than a list of roles and
+          achievements.
+        </h2>
+        <div className="max-w-4xl space-y-5 leading-8 text-zinc-300">
+          <p>
+            The strongest professional identities are rarely built on titles
+            alone. They emerge through a combination of work, ideas, discipline,
+            and point of view. That is the direction I want this website to
+            take.
+          </p>
+          <p>
+            Alongside projects and experience, this space will also hold
+            reflections on books, competition, decision-making, coaching, and
+            the habits that shape a more intentional life.
+          </p>
         </div>
       </section>
-    </div>
+
+      <section className="mt-24 space-y-8">
+        <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
+          Coming Next
+        </p>
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-900/40 p-8">
+          <ul className="space-y-3 leading-8 text-zinc-300">
+            <li>Interactive CV</li>
+            <li>Case-study based projects</li>
+            <li>Technical and professional writing</li>
+            <li>Kaggle journey and experiments</li>
+            <li>Coaching page</li>
+            <li>Personal reflections and book notes</li>
+          </ul>
+        </div>
+      </section>
+    </main>
   );
 }

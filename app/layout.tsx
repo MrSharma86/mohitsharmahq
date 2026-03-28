@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import Link from "next/link";
+import "./globals.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Mohit Sharma | Data Scientist",
   description:
     "A data scientist who solves real problems, writes thoughtfully, competes rigorously, and coaches people to grow.",
@@ -22,75 +22,45 @@ function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-neutral-950/70 backdrop-blur-xl">
-      <div className="mx-auto max-w-6xl px-6 py-5 md:px-10">
-        <div className="flex items-center justify-between">
-          <Link
-            href="/"
-            className="text-sm font-semibold uppercase tracking-[0.25em] text-white"
-          >
-            Mohit Sharma
-          </Link>
+    <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/85 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
+        <Link
+          href="/"
+          className="text-sm font-medium tracking-[0.12em] text-zinc-100 transition hover:text-zinc-300"
+        >
+          Mohit Sharma
+        </Link>
 
-          <div className="hidden items-center gap-8 md:flex">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm text-neutral-400 transition hover:text-white"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
+        <nav className="hidden items-center gap-6 md:flex">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-sm text-zinc-400 transition hover:text-zinc-100"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
 
-          <details className="md:hidden">
-            <summary className="cursor-pointer list-none text-sm text-neutral-300 transition hover:text-white">
-              Menu
-            </summary>
-
-            <div className="absolute left-0 right-0 top-full border-b border-white/10 bg-neutral-950/95 px-6 py-4 backdrop-blur-xl">
-              <nav className="flex flex-col gap-4">
+        <details className="relative md:hidden">
+          <summary className="list-none cursor-pointer text-sm text-zinc-300">
+            Menu
+          </summary>
+          <div className="absolute right-0 mt-3 w-44 rounded-2xl border border-zinc-800 bg-zinc-950/95 p-3 shadow-2xl">
+            <div className="flex flex-col gap-2">
+              {navItems.map((item) => (
                 <Link
-                  href="/about"
-                  className="text-sm text-neutral-300 transition hover:text-white"
+                  key={item.name}
+                  href={item.href}
+                  className="rounded-lg px-3 py-2 text-sm text-zinc-400 transition hover:bg-zinc-900 hover:text-zinc-100"
                 >
-                  About
+                  {item.name}
                 </Link>
-                <Link
-                  href="/cv"
-                  className="text-sm text-neutral-300 transition hover:text-white"
-                >
-                  CV
-                </Link>
-                <Link
-                  href="/projects"
-                  className="text-sm text-neutral-300 transition hover:text-white"
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="/writing"
-                  className="text-sm text-neutral-300 transition hover:text-white"
-                >
-                  Writing
-                </Link>
-                <Link
-                  href="/coaching"
-                  className="text-sm text-neutral-300 transition hover:text-white"
-                >
-                  Coaching
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-sm text-neutral-300 transition hover:text-white"
-                >
-                  Contact
-                </Link>
-              </nav>
+              ))}
             </div>
-          </details>
-        </div>
+          </div>
+        </details>
       </div>
     </header>
   );
@@ -98,12 +68,14 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer className="border-t border-white/10">
-      <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-neutral-400 md:px-10">
-        <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Mohit Sharma. All rights reserved.</p>
-          <p>Built with clarity, intent, and thoughtful ambition.</p>
-        </div>
+    <footer className="border-t border-zinc-800">
+      <div className="mx-auto max-w-6xl px-6 py-8 sm:px-8">
+        <p className="text-sm text-zinc-500">
+          © {new Date().getFullYear()} Mohit Sharma. All rights reserved.
+        </p>
+        <p className="mt-2 text-sm text-zinc-600">
+          Built with clarity, intent, and thoughtful ambition.
+        </p>
       </div>
     </footer>
   );
@@ -116,9 +88,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-neutral-950 text-neutral-100 antialiased">
+      <body>
         <Navbar />
-        <main>{children}</main>
+        {children}
         <Footer />
       </body>
     </html>
