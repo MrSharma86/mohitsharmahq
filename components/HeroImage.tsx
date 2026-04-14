@@ -29,7 +29,7 @@ export default function HeroImage({
       </div>
 
       {caption ? (
-        <figcaption className="mt-3 text-sm text-zinc-500">
+        <figcaption className="mt-3 text-center text-sm text-zinc-500">
           {caption}
         </figcaption>
       ) : null}
