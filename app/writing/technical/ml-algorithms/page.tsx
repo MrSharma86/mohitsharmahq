@@ -1,43 +1,9 @@
 import Link from "next/link";
+import { getAllArticles } from "@/lib/mdx";
 
-const articles = [
-  {
-    title: "Bias, Variance, and the Cost of Overconfidence",
-    description:
-      "A working note on model generalisation, overfitting, and why strong validation discipline matters more than impressive training performance.",
-    type: "Essay",
-  },
-  {
-    title: "What Makes an Algorithm Useful in Practice",
-    description:
-      "A reflection on how algorithmic elegance meets real-world constraints such as noisy data, operational trade-offs, and implementation limits.",
-    type: "Working Note",
-  },
-  {
-    title: "From Feature Engineering to Decision Quality",
-    description:
-      "A piece on how modelling choices influence downstream decisions, not just predictive performance in isolation.",
-    type: "Essay",
-  },
-  {
-    title: "Optimisation Under Business Constraints",
-    description:
-      "A note on designing models and optimisation approaches when the objective function is shaped by practical organisational realities.",
-    type: "Working Note",
-  },
-  {
-    title: "Why Evaluation Design Matters as Much as Model Choice",
-    description:
-      "A draft essay on testing frameworks, realistic validation, and the importance of measuring what actually matters.",
-    type: "Essay",
-  },
-  {
-    title: "Statistical Thinking for Modern Machine Learning",
-    description:
-      "A placeholder article exploring why statistical discipline still underpins reliable machine learning work.",
-    type: "Essay",
-  },
-];
+const articles = getAllArticles().filter(
+  (a) => a.slug.includes("ml-algorithms")
+);
 
 export default function MlAlgorithmsPage() {
   return (
@@ -68,9 +34,10 @@ export default function MlAlgorithmsPage() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {articles.map((article) => (
-            <article
-              key={article.title}
-              className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 transition hover:border-white/20 hover:bg-white/[0.05]"
+            <Link
+              key={article.slug.join("/")}
+              href={`/writing/${article.slug.join("/")}`}
+              className="block rounded-3xl border border-white/10 bg-white/[0.03] p-8 transition hover:border-white/20 hover:bg-white/[0.05]"
             >
               <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">
                 {article.type}
@@ -81,7 +48,7 @@ export default function MlAlgorithmsPage() {
               <p className="mt-4 text-base leading-7 text-zinc-400">
                 {article.description}
               </p>
-            </article>
+            </Link>
           ))}
         </div>
 
