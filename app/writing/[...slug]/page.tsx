@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
+import ArticleLikes from "@/components/ArticleLikes";
 import { useMDXComponents } from "@/mdx-components";
 
 type ArticlePageProps = {
@@ -24,6 +25,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const source = fs.readFileSync(filePath, "utf-8");
   const { content, data } = matter(source);
   const components = useMDXComponents({});
+  const articleSlug = slug.join("/");
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white">
@@ -35,9 +37,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </p>
           ) : null}
 
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            {data.title}
-          </h1>
+          <div className="flex items-start justify-between gap-4">
+            <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+              {data.title}
+            </h1>
+
+            <ArticleLikes slug={articleSlug} placement="top" />
+          </div>
 
           {data.description ? (
             <p className="mt-6 text-lg leading-8 text-zinc-300">
@@ -48,6 +54,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <div className="mt-12">
             <MDXRemote source={content} components={components} />
           </div>
+
+          <ArticleLikes slug={articleSlug} placement="bottom" />
 
           <div className="mt-16">
             <Link
