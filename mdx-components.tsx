@@ -2,6 +2,8 @@ import type { MDXComponents } from "mdx/types";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import type { ComponentPropsWithoutRef } from "react";
+import HeroImage from "@/components/HeroImage";
+import Image from "next/image";
 
 type CodeProps = ComponentPropsWithoutRef<"code"> & {
   className?: string;
@@ -67,7 +69,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     code: ({ className, children, ...props }: CodeProps) => {
       const match = /language-(\w+)/.exec(className || "");
       const language = match?.[1] || "python";
-
       const isBlock =
         typeof children === "string" && children.includes("\n");
 
@@ -109,6 +110,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
 
     pre: ({ children }) => <>{children}</>,
+
+    img: (props) => (
+      <span className="my-8 block overflow-hidden rounded-2xl border border-white/10">
+        <Image
+          src={props.src || ""}
+          alt={props.alt || ""}
+          width={1600}
+          height={900}
+          className="h-auto w-full object-cover"
+        />
+      </span>
+    ),
+
+    HeroImage,
 
     ...components,
   };
