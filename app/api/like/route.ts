@@ -1,12 +1,20 @@
-const likes: Record<string, number> = {};
+import { kv } from "@vercel/kv";
+
+function getLikeKey(slug: string) {
+  return `likes:${slug}`;
+}
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const slug = searchParams.get("slug") || "";
+  const slug = searchParams.get("slug");
 
-  return Response.json({
-    likes: likes[slug] || 0,
-  });
+  if (!slug) {
+    return Response.json({ error: "Missing slug" }, { status: 400 });
+  }
+
+  const likes = (await kv.get<number>(getLikeKey(slug))) ?? 0;
+
+  return Response.json({ likes });
 }
 
 export async function POST(req: Request) {
@@ -16,13 +24,7 @@ export async function POST(req: Request) {
     return Response.json({ error: "Missing slug" }, { status: 400 });
   }
 
-  if (!likes[slug]) {
-    likes[slug] = 0;
-  }
+  const likes = await kv.incr(getLikeKey(slug));
 
-  likes[slug] += 1;
-
-  return Response.json({
-    likes: likes[slug],
-  });
+  return Response.json({ likes });
 }

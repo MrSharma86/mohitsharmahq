@@ -8,6 +8,12 @@ type ArticleLikesProps = {
   placement: "top" | "bottom";
 };
 
+type LikeSyncDetail = {
+  slug: string;
+  count: number;
+  clicked: boolean;
+};
+
 export default function ArticleLikes({
   slug,
   placement,
@@ -30,6 +36,23 @@ export default function ArticleLikes({
 
     const alreadyClicked = localStorage.getItem(`liked:${slug}`) === "true";
     setClicked(alreadyClicked);
+
+    const handleSync = (event: Event) => {
+      const customEvent = event as CustomEvent<LikeSyncDetail>;
+      if (customEvent.detail.slug !== slug) return;
+
+      setCount(customEvent.detail.count);
+      setClicked(customEvent.detail.clicked);
+    };
+
+    window.addEventListener("article-like-sync", handleSync as EventListener);
+
+    return () => {
+      window.removeEventListener(
+        "article-like-sync",
+        handleSync as EventListener
+      );
+    };
   }, [slug]);
 
   const handleClick = async () => {
@@ -44,10 +67,26 @@ export default function ArticleLikes({
         body: JSON.stringify({ slug }),
       });
 
+      if (!res.ok) {
+        throw new Error("Failed to like article");
+      }
+
       const data = await res.json();
-      setCount(data.likes ?? count + 1);
+      const nextCount = data.likes ?? count + 1;
+
+      setCount(nextCount);
       setClicked(true);
       localStorage.setItem(`liked:${slug}`, "true");
+
+      window.dispatchEvent(
+        new CustomEvent<LikeSyncDetail>("article-like-sync", {
+          detail: {
+            slug,
+            count: nextCount,
+            clicked: true,
+          },
+        })
+      );
     } catch (e) {
       console.error("Like failed", e);
     }

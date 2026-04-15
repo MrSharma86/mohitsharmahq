@@ -17,7 +17,7 @@ export default function LikeButton({
     return (
       <button
         onClick={onClick}
-        className={`flex items-center gap-2 transition active:scale-95 ${
+        className={`flex items-center gap-2 transition active:scale-95 cursor-pointer ${
           clicked ? "text-white" : "text-zinc-400 hover:text-white"
         }`}
       >
