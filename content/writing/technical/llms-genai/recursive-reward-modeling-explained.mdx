@@ -1,0 +1,119 @@
+---
+title: "Recursive Reward Modeling Explained: A Simple Tutorial with Real Examples  🧩"
+description: "A simple, practical tutorial on Recursive Reward Modeling, showing how scalable oversight can help train more capable AI systems without overwhelming human evaluators."
+date: "2026-04-15"
+type: "Notes"
+category: "Writing / Technical / LLMs & GenAI"
+featured: false
+showCTA: true
+ctaVariant: "writing"
+---
+
+<HeroImage
+  src="/images/writing/llms-genai/recursive-reward-modeling-explained.jpg"
+  alt="Recursive Reward Modeling Explained: A Simple Tutorial with Real Examples"
+  caption="Recursive Reward Modeling Explained."
+  priority={true}
+/>
+
+**What if we could train super-powerful AIs while always keeping humans in the loop - even when the tasks get too complex for us to judge directly?**
+
+That’s exactly what **Recursive Reward Modeling (RRM)** tries to do. It’s one of the most promising ideas in AI alignment and scalable oversight.
+
+Don’t worry - I’ll explain everything in plain English, like you’re learning it for the first time. No heavy math required. We’ll go step by step and end with a concrete, real-world-style example.
+
+### First: What Is Regular Reward Modeling?
+
+Before we get to the “recursive” part, let’s start with the basics.
+
+In normal AI training (like ChatGPT or Claude), we use **Reinforcement Learning from Human Feedback (RLHF)**:
+
+1. Humans look at two AI answers and say “I prefer Answer A over Answer B.” If you use chatGPT you would have surely come accross it. 
+2. We train a **Reward Model** - basically an AI judge that learns to predict what humans would prefer.
+3. We use that reward model to train the main AI to produce better outputs.
+
+This works great for simple tasks (writing short emails, answering basic questions). But what happens when the task gets **really complex**?
+
+- Writing a 10,000-line software program
+- Designing a new computer chip
+- Planning a long-term business strategy
+
+A human can’t easily read the whole thing and say “this is good” or “this is bad.” It would take too much time or expertise. That’s where **Recursive Reward Modeling** comes in.
+
+### What Makes It “Recursive”?
+
+“Recursive” just means **repeating the same helpful trick at higher and higher levels**.
+
+Instead of asking humans to judge super-complex outputs directly, we train **helper AIs** to assist the humans in the judging process.
+
+Then we use those improved judgments to train even stronger main AIs… which in turn can help train even better helper AIs… and so on.
+
+It’s like building a company:
+- The CEO (human) can’t check every employee’s work.
+- So you hire managers (helper AIs) to summarize, check, and flag problems.
+- The managers themselves were trained with human feedback, so they stay aligned.
+
+This creates a **virtuous cycle** that scales with the AI’s intelligence.
+
+### Here is Step by Step Guide On How Recursive Reward Modeling Works
+
+Here’s the simple loop:
+
+1. **Start small**  
+   Train a basic AI (let’s call it Agent A) using normal human feedback and reward modeling.
+
+2. **Train a helper**  
+   Train a second AI (Agent B slightly stronger) to help humans **evaluate** Agent A’s work.  
+   Example: Agent B can summarize long code, find obvious bugs, or compare two solutions side-by-side.
+
+3. **Use the helper to train the next level**  
+   Now humans + Agent B together evaluate the work of a new, even stronger AI (Agent C).  
+   Because Agent B does the heavy lifting (summarizing, checking details), humans can give high-quality feedback on much harder tasks.
+
+4. **Repeat**  
+   Use Agent C + new helpers to train Agent D… and keep going.
+
+Each level of helper AI makes the human’s job easier, so we can keep scaling to more powerful models while staying aligned with what humans actually want.
+
+### Real Example: Training an AI to Write Complex Code
+
+Let’s make this concrete with a practical example most developers will recognize.
+
+**Goal**: Train an AI that can write and debug a full mobile app (thousands of lines of code).
+
+**Without RRM**: A human would have to read the entire app and say “this is good.” Impossible in reasonable time.
+
+**With Recursive Reward Modeling**:
+
+1. **Level 1**  
+   Train Agent A (basic coder) on small functions using direct human feedback.
+
+2. **Level 2**  
+   Train Agent B (reviewer) to help humans evaluate bigger code.  
+   - Agent B can: summarize each file, list potential bugs, compare two versions of the same feature.  
+   - Human now only needs to look at Agent B’s summary + flags instead of 2,000 lines of code.
+
+3. **Level 3**  
+   Train Agent C (advanced coder) using feedback from humans + Agent B.  
+   Now humans can judge full app features because Agent B breaks everything down.
+
+4. **Level 4 and beyond**  
+   Train even stronger reviewer agents that help evaluate entire apps or systems.  
+   The process repeats - each new coder gets better helpers.
+
+Result? You end up with a super-capable coding AI, but every step was guided by human preferences (just amplified through helpers).
+
+Here’s a tiny pseudocode version of the idea:
+
+```python
+# Level 1: Basic coder
+agent_A = train_coder_with_human_feedback()
+
+# Level 2: Helper reviewer
+agent_B = train_reviewer_to_assist_humans(agent_A)
+
+# Level 3: Stronger coder
+agent_C = train_coder_with_help_of_reviewer(agent_B)
+
+# Repeat...
+agent_D = train_coder_with_help_of_reviewer(train_new_reviewer(agent_C)) Keep the article same for now. Just change the mdx top parameters to match our website also suggest the type. Do we have callbacks if not lets add them 
