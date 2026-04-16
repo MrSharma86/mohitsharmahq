@@ -10,6 +10,7 @@ export type ArticleMeta = {
   date?: string;
   type?: string;
   category?: string;
+  featured?: boolean;
   slug: string[];
 };
 
@@ -37,29 +38,40 @@ export function getAllArticles(): ArticleMeta[] {
 
   const files = walkDirectory(CONTENT_PATH);
 
-  return files.map((fullPath) => {
-    const source = fs.readFileSync(fullPath, "utf-8");
-    const { data } = matter(source);
+  return files
+    .map((fullPath) => {
+      const source = fs.readFileSync(fullPath, "utf-8");
+      const { data } = matter(source);
 
-    const slug = fullPath
-      .replace(CONTENT_PATH, "")
-      .replace(/\.mdx$/, "")
-      .split(path.sep)
-      .filter(Boolean);
+      const slug = fullPath
+        .replace(CONTENT_PATH, "")
+        .replace(/\.mdx$/, "")
+        .split(path.sep)
+        .filter(Boolean);
 
-    return {
-      title: data.title ?? "Untitled Article",
-      description: data.description ?? "",
-      date: data.date ?? "",
-      type: data.type ?? "",
-      category: data.category ?? "",
-      slug,
-    };
-  });
+      return {
+        title: data.title ?? "Untitled Article",
+        description: data.description ?? "",
+        date: data.date ?? "",
+        type: data.type ?? "",
+        category: data.category ?? "",
+        featured: data.featured ?? false,
+        slug,
+      };
+    })
+    .sort((a, b) => {
+      const aTime = a.date ? new Date(a.date).getTime() : 0;
+      const bTime = b.date ? new Date(b.date).getTime() : 0;
+      return bTime - aTime;
+    });
 }
 
 export function getArticlesByCategory(categorySlug: string): ArticleMeta[] {
   return getAllArticles().filter((article) =>
     article.slug.includes(categorySlug)
   );
+}
+
+export function getFeaturedArticles(): ArticleMeta[] {
+  return getAllArticles().filter((article) => article.featured);
 }

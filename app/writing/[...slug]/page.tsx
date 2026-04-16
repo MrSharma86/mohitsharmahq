@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 
 import ArticleLikes from "@/components/ArticleLikes";
 import { useMDXComponents } from "@/mdx-components";
@@ -52,7 +53,15 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           ) : null}
 
           <div className="mt-12">
-            <MDXRemote source={content} components={components} />
+            <MDXRemote
+              source={content}
+              components={components}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                },
+              }}
+            />
           </div>
 
           <ArticleLikes slug={articleSlug} placement="bottom" />
