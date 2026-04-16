@@ -18,7 +18,7 @@ function Navbar() {
     { name: "CV", href: "/cv" },
     { name: "Projects", href: "/projects" },
     { name: "Writing", href: "/writing" },
-    { name: "Coaching", href: "/coaching" },
+    { name: "Work with Me", href: "/work-with-me" },
     { name: "Contact", href: "/contact" },
   ];
 

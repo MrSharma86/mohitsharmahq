@@ -1,0 +1,127 @@
+---
+title: "Lesser-Known but Powerful Machine Learning Algorithms Used in Real Solutions"
+description: "A practical overview of underrated machine learning algorithms that solve real-world problems in anomaly detection, interpretability, privacy, and time-to-event modeling."
+date: "2026-04-16"
+type: "Notes"
+category: "Writing / Technical / Machine Learning & Advanced Algorithms"
+featured: false
+showCTA: true
+ctaVariant: "writing"
+---
+
+While Linear Regression, Random Forest, and XGBoost grab most of the headlines, many lesser-known algorithms deliver excellent results in specific real-world scenarios. These tools often shine in areas like anomaly detection, privacy, interpretability, time-to-event modeling, and resource-constrained environments.
+
+Here’s a practical list of **underrated but widely used ML algorithms** that engineers and data scientists rely on to build robust production systems.
+
+## Specialized Algorithms for Real Challenges
+
+### 1. Isolation Forest (iForest)
+An ensemble method designed specifically for anomaly and outlier detection. It isolates anomalies quickly by random partitioning.
+
+What makes Isolation Forest powerful is that it does not try to model normal behavior explicitly. Instead, it exploits the idea that anomalies are easier to isolate than regular points. In high-dimensional data, where density estimation becomes unreliable, this approach remains surprisingly effective. It also scales well to large datasets without heavy tuning.
+
+In one fraud detection setup, I have seen it used as a first-pass filter to flag suspicious transactions before passing them to more expensive models. This reduced the search space significantly and improved overall system efficiency without needing labeled fraud data upfront.
+
+**Why it’s used**: Extremely fast, scalable to high dimensions, and works well with unlabeled data.  
+**Real-world applications**: Fraud detection in banking, network intrusion systems, predictive maintenance, and monitoring.
+
+---
+
+### 2. One-Class SVM
+Trains only on “normal” examples to learn a boundary around them, where anything outside is treated as anomalous.
+
+Unlike Isolation Forest, One-Class SVM builds a precise boundary around the normal data distribution. This makes it useful in environments where defining “normal” is easier than collecting anomaly labels. However, it can be sensitive to kernel choice and scaling, which means it requires more careful tuning in production systems.
+
+In industrial monitoring, I have seen this approach used where machines operate under stable conditions most of the time. The model learns normal vibration patterns, and even subtle deviations trigger alerts before actual failures occur.
+
+**Real-world applications**: Fraud detection and industrial fault detection when anomalies are rare during training.
+
+---
+
+### 3. AdaBoost (Adaptive Boosting)
+Iteratively adjusts weights to focus on misclassified examples, often using weak learners like shallow trees.
+
+AdaBoost is one of the earliest boosting algorithms, but it still holds its ground in many practical settings. Its strength lies in simplicity and interpretability. Instead of building complex trees, it combines many weak learners into a strong one, focusing progressively on harder cases.
+
+In smaller tabular datasets, especially where explainability matters, I have seen AdaBoost outperform more complex models simply because it avoids overfitting and remains easier to debug when things go wrong.
+
+**Real-world applications**: Face detection pipelines, churn prediction, and tasks where simplicity and interpretability matter.
+
+---
+
+### 4. Survival Analysis (Kaplan-Meier, Cox Proportional Hazards)
+Models time-to-event data while properly handling censored observations.
+
+Most ML models ignore the concept of time until an event occurs. Survival analysis directly models this, making it essential in domains where timing matters as much as the event itself. It handles incomplete observations naturally, which is common in real-world datasets.
+
+In subscription businesses, I have seen survival models used to estimate customer churn timelines rather than just predicting whether a customer will churn. This enables more precise intervention strategies based on expected time windows.
+
+**Real-world applications**: Customer lifetime value and churn in subscriptions, predictive maintenance (time until failure), and clinical or healthcare analytics.
+
+---
+
+### 5. Hidden Markov Models (HMM)
+Probabilistic models for sequential data with hidden states.
+
+HMMs assume that observed data is generated from underlying hidden states that evolve over time. While deep learning models now dominate sequence modeling, HMMs remain useful when data is limited or when interpretability of state transitions is important.
+
+In early-stage time-series systems, I have seen HMMs used to detect regime shifts, such as transitions between normal operation and degraded performance, before more complex models are introduced.
+
+**Real-world applications**: Speech recognition, part-of-speech tagging, bioinformatics, and early time-series anomaly detection.
+
+---
+
+### 6. Symbolic Regression
+Uses evolutionary methods to discover explicit mathematical equations that best fit the data.
+
+Unlike traditional regression, symbolic regression searches for the model itself. This makes it particularly valuable in scientific and engineering domains where understanding the relationship is as important as prediction accuracy.
+
+In engineering contexts, I have seen this used to derive simplified formulas from simulation data, making complex systems easier to reason about and communicate to non-technical stakeholders.
+
+**Real-world applications**: Scientific discovery, engineering simulations, and any domain needing transparent, white-box models instead of black boxes.
+
+---
+
+### 7. Gaussian Mixture Models (GMM)
+Probabilistic clustering that assumes data comes from a mixture of Gaussian distributions.
+
+GMM extends basic clustering by allowing soft assignments, meaning each point can belong to multiple clusters with different probabilities. This is useful when boundaries between groups are not sharp.
+
+In customer segmentation, I have seen GMM used where users naturally fall between segments. Instead of forcing hard clusters, it provides a probabilistic view, which is more aligned with real-world behavior.
+
+**Real-world applications**: Speaker identification, image segmentation, and soft customer segmentation with uncertainty estimates.
+
+---
+
+## Modern & Niche Approaches
+
+### 8. Federated Learning
+Trains models across decentralized devices or servers without sharing raw data.
+
+Federated learning shifts the paradigm from centralizing data to training models where the data already exists. This is critical in privacy-sensitive environments where data movement is restricted.
+
+In mobile ecosystems, I have seen this approach used to improve personalization models without ever collecting raw user data centrally, which helps meet both performance and regulatory requirements.
+
+**Real-world applications**: Mobile keyboard prediction (e.g., Gboard), healthcare models across hospitals, finance, and edge or IoT devices.
+
+---
+
+### 9. Tsetlin Machines
+Logic-based learning using propositional logic and automata.
+
+Tsetlin Machines offer a very different approach compared to neural networks. Instead of optimizing continuous weights, they learn logical rules using discrete states. This makes them highly interpretable and computationally efficient.
+
+In edge deployments, I have seen interest in such models where power and compute constraints make traditional deep learning approaches impractical.
+
+**Real-world applications**: Energy-efficient models on edge devices and interpretable classification tasks.
+
+---
+
+### 10. Evolutionary / Genetic Algorithms
+Optimization inspired by natural selection through mutation, crossover, and selection.
+
+These algorithms are widely used for optimization problems where traditional gradient-based methods struggle. They are particularly useful in large, non-convex search spaces.
+
+In scheduling and logistics problems, I have seen genetic algorithms used to explore complex solution spaces where deterministic approaches fail to find good solutions within reasonable time.
+
+**Real-world applications**: Hyperparameter tuning, complex scheduling, feature selection, and neural architecture search.

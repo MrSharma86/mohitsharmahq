@@ -66,6 +66,39 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     hr: (props) => <hr className="my-10 border-white/10" {...props} />,
 
+    table: (props) => (
+      <div className="my-8 overflow-x-auto">
+        <table
+          className="min-w-full border border-white/20 text-left text-sm text-zinc-300"
+          {...props}
+        />
+      </div>
+    ),
+
+    thead: (props) => (
+      <thead className="bg-white/[0.05]" {...props} />
+    ),
+
+    tbody: (props) => <tbody {...props} />,
+
+    tr: (props) => (
+      <tr className="border-b border-white/10" {...props} />
+    ),
+
+    th: (props) => (
+      <th
+        className="border border-white/20 px-4 py-3 font-semibold text-white"
+        {...props}
+      />
+    ),
+
+    td: (props) => (
+      <td
+        className="border border-white/20 px-4 py-3 align-top"
+        {...props}
+      />
+    ),
+
     code: ({ className, children, ...props }: CodeProps) => {
       const match = /language-(\w+)/.exec(className || "");
       const language = match?.[1] || "python";
